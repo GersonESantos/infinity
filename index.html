@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .msg {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Formulário de Contato</h2>
+
+    <form id="contact-form" method="POST" action="send_email.php">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit">Enviar</button>
+        <div id="form-message" class="msg"></div>
+    </form>
+
+    <script>
+        // Validação básica do formulário com JavaScript
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita o envio imediato do formulário
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+            let errorMsg = document.getElementById("form-message");
+
+            if (name === "" || email === "" || message === "") {
+                errorMsg.innerHTML = "Por favor, preencha todos os campos.";
+                errorMsg.classList.add("error");
+            } else {
+                this.submit(); // Envia o formulário se a validação estiver correta
+            }
+        });
+    </script>
+
+</body>
+</html>
